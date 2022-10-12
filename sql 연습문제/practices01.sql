@@ -28,7 +28,7 @@ select count(*) from departments;
 
 -- 문제6.
 -- 현재 부서 매니저는 몇 명이나 있나요?(역임 매너저는 제외) 
-select emp_no, title, to_date  from titles
+select count(*)  from titles
 where title='manager' and to_date like '9999%';
 
 -- 문제7.
