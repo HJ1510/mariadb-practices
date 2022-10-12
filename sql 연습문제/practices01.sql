@@ -27,12 +27,12 @@ where to_date like '9999%';
 select count(*) from departments;
 
 -- 문제6.
--- 현재 부서 매니저는 몇 명이나 있나요?(역임 매너저는 제외)
-select count(*) from titles
+-- 현재 부서 매니저는 몇 명이나 있나요?(역임 매너저는 제외) 
+select emp_no, title, to_date  from titles
 where title='manager' and to_date like '9999%';
 
 -- 문제7.
--- 전체 부서를 출력하려고 합니다. 순서는 부서이름이 긴 순서대로 출력해 보세요. ***
+-- 전체 부서를 출력하려고 합니다. 순서는 부서이름이 긴 순서대로 출력해 보세요. 
 select dept_name from departments
 order by length(dept_name) desc;
 
@@ -42,7 +42,7 @@ select count(*) from salaries
 where salary >= 120000;
 
 -- 문제9.
--- 어떤 직책들이 있나요? 중복 없이 이름이 긴 순서대로 출력해 보세요. ***
+-- 어떤 직책들이 있나요? 중복 없이 이름이 긴 순서대로 출력해 보세요. 
 select distinct (title) from titles
 order by length (title) desc;
 
