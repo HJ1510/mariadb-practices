@@ -93,7 +93,8 @@ order by birth asc; -- 내림차수(asc 기본값) 오름차순(desc)
 select count(*) from pet; -- count(*)은 가장 효율적으로 전체 데이터 통계를 집계하는 칼럼을 자동으로 선택, 따로 지정한 칼럼에 null이 있을 경우 null 데이터는 집계 제외
 select count(death) from pet; -- == select count(*) from pet where death is not null;
 
--- select ~ from ~ where ~ order by ~
+-- select c1,c2,c3 from tbl where (coud) order by c1 asc/desc
+
 
 
 
