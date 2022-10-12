@@ -11,7 +11,7 @@ drop user'webdb'@'locahost';
 create user 'webdb'@'localhost' identified by 'webdb';
 
 -- 권한 부여
-grant all privileges on webdb.* to 'webdb'@'locahost';
+grant all privileges on webdb.* to 'webdb'@'localhost';
 
 -- 권한 정보 재로딩
 flush privileges;
