@@ -31,6 +31,10 @@ select count(*) from departments;
 select count(*)  from titles
 where title='manager' and to_date like '9999%';
 
+select count(*)
+  from dept_manager
+ where to_date = '9999-01-01';
+
 -- 문제7.
 -- 전체 부서를 출력하려고 합니다. 순서는 부서이름이 긴 순서대로 출력해 보세요. 
 select dept_name from departments
@@ -39,7 +43,8 @@ order by length(dept_name) desc;
 -- 문제8.
 -- 현재 급여가 120,000이상 받는 사원은 몇 명이나 있습니까?
 select count(*) from salaries
-where salary >= 120000;
+where salary >= 120000
+and to_date ='9999-01-01';
 
 -- 문제9.
 -- 어떤 직책들이 있나요? 중복 없이 이름이 긴 순서대로 출력해 보세요. 
@@ -53,6 +58,6 @@ where title = 'engineer' and to_date like '9999%';
 
 -- 문제11
 -- 사번이 13250(Zeydy)인 지원이 직책 변경 상황을 시간순으로 출력해보세요.
-select title, from_date from titles
+select title, from_date, to_date  from titles
 where emp_no=13250
 order by from_date asc;
