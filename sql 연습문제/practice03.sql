@@ -18,6 +18,7 @@ where e.emp_no =t.emp_no
 and t.to_date ='9999-01-01'
 order by e.first_name;
 
+
 -- 문제3.
 -- 전체 사원의 사번, 이름, 현재 부서를 이름 순서로 출력하세요..
 select e.emp_no '사번', concat(e.first_name,' ',e.last_name) '이름', d.dept_name '현재부서' 
@@ -27,6 +28,7 @@ and d.dept_no =de.dept_no
 and de.to_date ='9999-01-01'
 order by e.first_name ;
 
+
 -- 문제4.
 -- 전체 사원의 사번, 이름, 연봉, 직책, 부서를 모두 이름 순서로 출력합니다.
 select e.emp_no '사번', concat(e.first_name,' ',e.last_name) '이름', s.salary '연봉', t.title '직책', d.dept_name '부서'
@@ -35,9 +37,9 @@ where e.emp_no =s.emp_no
 and e.emp_no =t.emp_no 
 and e.emp_no =de.emp_no 
 and d.dept_no =de.dept_no 
--- and s.to_date ='9999-01-01'
--- and t.to_date ='9999-01-01'
--- and de.to_date ='9999-01-01'
+and s.to_date ='9999-01-01'
+and t.to_date ='9999-01-01'
+and de.to_date ='9999-01-01'
 and t.title ='manager'
 order by e.first_name  ;
 
@@ -50,6 +52,7 @@ from employees e , titles t
 where e.emp_no =t.emp_no 
 and t.to_date !='9999-01-01'
 and t.title ='Technique Leader';
+
 
 -- 문제6.
 -- 직원 이름(last_name) 중에서 S(대문자)로 시작하는 직원들의 이름, 부서명, 직책을 조회하세요.
@@ -95,7 +98,8 @@ and de.emp_no =s.emp_no
 and de.to_date ='9999-01-01'
 and s.to_date ='9999-01-01'
 group by d.dept_name 
-order by s.salary desc;
+order by avg(s.salary) desc;
+-- order by s.salary desc;
 
 -- 문제10.
 -- 현재, 직책별 평균 연봉을 연봉이 큰 직책 순서대로 출력하세요.
@@ -106,3 +110,5 @@ and t.to_date ='9999-01-01'
 and s.to_date ='9999-01-01'
 group by t.title 
 order by avg(s.salary) desc;
+
+
