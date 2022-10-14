@@ -1,6 +1,8 @@
 -- 조인
--- inner join : 조인 조건 만족하는 데이터만 출력 => equi join / join ~ on(표준)
--- outter join : 조인 조건 만족하지 못하는 데이터도 함께 출력 => join left ~ on / join right ~ on / join full ~ on(마리아db 지원x)
+-- inner join : 조인 조건 만족하는 데이터만 출력
+-- => equi join / join ~ on(표준) / natural join(표준) / join using(표준)
+-- outer join : 조인 조건 만족하지 못하는 데이터도 함께 출력
+-- => join left ~ on(표준) / join right ~ on(표준) / join full ~ on(표준)(마리아db mysql지원x)
 
 select *
 from dept_manager ;
@@ -43,7 +45,6 @@ where b.to_date ='9999-01-01';
 select count(*)                       -- <=의도치 않은 결과(값은 이름의 칼럼이 다 join되어버린것)
 from salaries a natural join titles b 
 where b.to_date ='9999-01-01';
-
 
 select count(*)
 from salaries a join titles b using(emp_no)
