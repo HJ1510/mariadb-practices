@@ -111,4 +111,15 @@ and s.to_date ='9999-01-01'
 group by t.title 
 order by avg(s.salary) desc;
 
+ select c.title, avg(b.salary)
+     from employees a,
+		  salaries b,
+          titles c
+    where a.emp_no = b.emp_no
+      and a.emp_no = c.emp_no
+      and b.to_date = '9999-01-01'
+      and c.to_date - '9999-01-01'
+ group by c.title
+ order by avg(b.salary) desc;
+
 

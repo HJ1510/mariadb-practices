@@ -67,7 +67,7 @@ and s.salary ;
 
 -- 문제4.
 -- 현재, 사원들의 사번, 이름, 매니저 이름, 부서 이름으로 출력해 보세요.
-select e.emp_no , e.first_name , manager.first_name, d.dept_name 
+select e.emp_no , e.first_name as 이름 , manager.first_name as 매니저, d.dept_name 
 from employees e , departments d , dept_emp de ,
  			(select e.first_name , d.dept_name 
 			from departments d , dept_manager dm , employees e 
@@ -85,7 +85,6 @@ and de.to_date ='9999-01-01' ;
 -- where d.dept_no =dm.dept_no 
 -- and dm.emp_no =e.emp_no 
 -- and dm.to_date ='9999-01-01';
-
 
 
 -- 문제5.
@@ -187,18 +186,55 @@ and avg_salary= (select max(a.avg_salary)
 
 -- 문제7.
 -- 평균 연봉이 가장 높은 직책?
-						
--- 직책별 평균연봉
-select t.title , avg(s.salary)
+select t.title
 from titles t , salaries s 
 where t.emp_no =s.emp_no
 and t.to_date ='9999-01-01'
 and s.to_date ='9999-01-01'
-group by t.title 
+group by t.title
+having avg(s.salary)= (select max(a.avg_salary)
+from (select t.title , avg(s.salary) as avg_salary
+from titles t , salaries s 
+where t.emp_no =s.emp_no
+and t.to_date ='9999-01-01'
+and s.to_date ='9999-01-01'
+group by t.title) a);
 
+-- 직책별 평균연봉
+-- select t.title , avg(s.salary) as avg_salary
+-- from titles t , salaries s 
+-- where t.emp_no =s.emp_no
+-- and t.to_date ='9999-01-01'
+-- and s.to_date ='9999-01-01'
+-- group by t.title ;
+-- 
+-- select max(a.avg_salary)
+-- from (select t.title , avg(s.salary) as avg_salary
+-- from titles t , salaries s 
+-- where t.emp_no =s.emp_no
+-- and t.to_date ='9999-01-01'
+-- and s.to_date ='9999-01-01'
+-- group by t.title) a;
 
 -- 문제8.
 -- 현재 자신의 매니저보다 높은 연봉을 받고 있는 직원은?
 -- 부서이름, 사원이름, 연봉, 매니저 이름, 메니저 연봉 순으로 출력합니다.
 -- 1 매니저 연봉 2 직원 연봉 => 매칭
 
+-- 직원 연봉
+select e.first_name , s.salary, e.emp_no 
+from departments d , dept_emp de , employees e , salaries s 
+where d.dept_no =de.dept_no 
+and de.emp_no =e.emp_no 
+and e.emp_no =s.emp_no 
+and de.to_date ='9999-01-01'
+and s.to_date ='9999-01-01'
+
+-- 매니저 연봉
+select d.dept_name , e.first_name as '매니저 이름', s.salary , e.emp_no 
+from salaries s , employees e , dept_manager dm , departments d
+where s.emp_no =e.emp_no 
+and e.emp_no =dm.emp_no
+and dm.dept_no =d.dept_no 
+and s.to_date ='9999-01-01'
+and dm.to_date ='9999-01-01';
