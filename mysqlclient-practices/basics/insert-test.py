@@ -10,10 +10,10 @@ try:
                charset='utf8') # mysql에서는 uft-8로 하면 오류
 
     # 2. cursor 생성
-    cursor=db.cursor()
+    cursor=db.cursor(DictCursor)
 
     # 3. sql(insert문) 실행
-    sql="insert into pet values('먼지', '윤현정', 'dog', 'f', '2013-01-18', null)"
+    sql=f"insert into pet values('먼지', '윤현정', 'dog', 'f', '2013-01-18', null)"
     count=cursor.execute(sql)
 
     # 4. commit
