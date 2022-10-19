@@ -30,10 +30,10 @@ def findall():
 
 def insert(member_no, book_no, amount):
     try:
-        db =  conn()
+        db = conn()
         cursor = db.cursor(DictCursor)
 
-        sql = "insert into cart values(null, %s, %s, %s)"
+        sql = "insert into cart values(%s, %s, %s)"
         count = cursor.execute(sql, (member_no, book_no, amount))
 
         db.commit()

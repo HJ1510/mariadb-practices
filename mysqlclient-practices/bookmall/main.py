@@ -6,7 +6,7 @@ from bookmall.models import model_cart
 
 
 print('--회원 리스트--')
-# model_member.insert(name='윤현정', tel='010-0000-0000',email='yoon@gmail.com', password='yoon' )
+# model_member.insert(name='윤현정', tel='010-0000-0000', email='yoon@gmail.com', password='yoon' )
 # model_member.insert(name='우재남', tel='010-1111-1111', email='woo@gmail.com', password='woo')
 results= model_member.findall()
 for index, result in enumerate(results):
@@ -29,9 +29,9 @@ results= model_book.findall()
 for index, result in enumerate(results):
     print(f'{index+1}:제목:{result["title"]}, price:{result["price"]}, {result["category"]}')
 
-print('--카트 리스트--') # *******
-# model_cart.insert('1','1','1')
-# model_cart.insert(2,3,1)
+print('--카트 리스트--')
+# model_cart.insert(2,3,2)
+# model_cart.insert(1,2,1)
 results= model_cart.findall()
 for index, result in enumerate(results):
     print(f'{index+1}:제목:{result["title"]}, amount:{result["amount"]}, {result["price"]}')
@@ -44,3 +44,6 @@ for index, result in enumerate(results):
     print(f'{index+1}:{result["orders_num"]}, {result["name"]}, {result["email"]}, {result["payment"]}, {result["address"]}')
 
 print('--주문도서 리스트--')
+results= model_book.findall()
+for index, result in enumerate(results):
+    print(f'{index+1}:{result["no"]} {result["title"]}')

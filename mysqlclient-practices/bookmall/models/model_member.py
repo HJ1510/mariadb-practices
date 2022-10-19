@@ -26,7 +26,6 @@ def findall():
         return results
 
     except OperationalError as e:
-        # 에러 처리
         print(f'에러:{e}')
 
 def insert(name, tel, email, password):

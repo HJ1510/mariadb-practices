@@ -15,7 +15,7 @@ def findall():
         db = conn()
         cursor = db.cursor(DictCursor)
 
-        sql = "select b.title, b.price, c.name as category  from category c , book b where c.`no` =b.category_no"
+        sql = "select b.no, b.title, b.price, c.name as category  from category c , book b where c.`no` =b.category_no"
         cursor.execute(sql)
 
         results = cursor.fetchall()
