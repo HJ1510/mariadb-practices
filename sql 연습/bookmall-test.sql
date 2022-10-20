@@ -16,7 +16,7 @@ select * from book;
 
 desc `member` ;
 
-select b.title, b.price, c.name as category from category c , book b where c.`no` =b.category_no; 
+select b.`no` , b.title, b.price, c.name as category from category c , book b where c.`no` =b.category_no; 
 
 select name , tel , email , password  from member;
 insert into member values(no, '가나다', '01011111111', 'a@gmail.com','1234');

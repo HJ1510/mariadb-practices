@@ -1,6 +1,7 @@
 from MySQLdb import connect, OperationalError
 from MySQLdb.cursors import DictCursor
 
+
 def conn():
     db = connect(user='bookmall',
                  password='bookmall',
@@ -9,6 +10,7 @@ def conn():
                  db='bookmall',
                  charset='utf8')
     return db
+
 
 def findall():
     try:
@@ -28,9 +30,10 @@ def findall():
     except OperationalError as e:
         print(f'에러:{e}')
 
+
 def insert(name):
     try:
-        db =  conn()
+        db = conn()
         cursor = db.cursor(DictCursor)
 
         sql = "insert into category values(null, %s)"
