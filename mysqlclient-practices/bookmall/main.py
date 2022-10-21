@@ -10,7 +10,7 @@ model_member.insert(name='윤현정', tel='010-0000-0000', email='yoon@gmail.com
 model_member.insert(name='우재남', tel='010-1111-1111', email='woo@gmail.com', password='woo')
 results= model_member.findall()
 for index, result in enumerate(results):
-    print(f'{index+1}:{result["name"]}, {result["tel"]}, {result["email"]}')
+    print(f'{index+1}:{result["name"]}, {result["tel"]}, {result["email"]}, {result["password"]}')
 
 
 print('--카테고리 리스트--')
@@ -41,7 +41,7 @@ print('--주문 리스트--')
 model_order.insert('2022100001', '14400', '서울시', 1)
 results=model_order.findall()
 for index, result in enumerate(results):
-    print(f'{index+1}:주문번호:{result["orders_num"]}, {result["name"]}, {result["email"]}, {result["payment"]}, {result["address"]}')
+    print(f'{index+1}:주문번호:{result["orders_num"]}, {result["name"]}, {result["email"]}, 결제금액:{result["payment"]}, {result["address"]}')
 
 print('--주문도서 리스트--')
 model_order.insert_order_book(1,1,1)

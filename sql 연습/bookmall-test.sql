@@ -40,3 +40,6 @@ desc orders;
 select o.orders_num , m.name ,m.email , o.payment , o.address from orders o , member m where o.member_no =m.`no` ;
 
 
+select b.`no` ,b.title, ob.amount from book b , order_book ob where b.`no` =ob.book_no ;
+
+insert into select b.`no` ,b.title, ob.amount from book b , order_book ob where b.`no` =ob.book_no values (1,1,1);
