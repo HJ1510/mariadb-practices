@@ -41,12 +41,6 @@ public class BookShop {
 
 	}
 
-
-
-	
-
-
-
 	private static void displayBookInfo() {
 		List<BookVo> list=new BookDao().findAll();
 		for (BookVo vo:list) {
