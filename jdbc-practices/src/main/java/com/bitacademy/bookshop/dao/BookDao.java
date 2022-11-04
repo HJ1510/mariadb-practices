@@ -18,7 +18,7 @@ public class BookDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
-		try {			
+		try {
 			conn = getConnection();
 
 			// 3. Statement 생성
@@ -32,7 +32,7 @@ public class BookDao {
 
 			// 5. SQL 실행
 			int count = pstmt.executeUpdate(); // executeQuery select 함수에서
-			
+
 			// 6. 결과처리
 			result = count == 1;
 
@@ -59,7 +59,7 @@ public class BookDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		try {			
+		try {
 			conn = getConnection();
 
 			String sql = "select a.no ,a.title, b.name,a.status  from book a ,author b where a.author_no =b.no order by a.no asc"; // 바인딩
@@ -71,7 +71,7 @@ public class BookDao {
 				Long no = rs.getLong(1); // 데이터 베이스는 1부터 시작
 				String title = rs.getString(2);
 				String authorName = rs.getString(3);
-				String ststus = rs.getString(3);
+				String ststus = rs.getString(4);
 
 				BookVo vo = new BookVo();
 				vo.setNo(no);
@@ -104,19 +104,59 @@ public class BookDao {
 	}
 
 	private Connection getConnection() throws SQLException {
-		Connection conn=null;
+		Connection conn = null;
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			String url = "jdbc:mysql://127.0.0.1:3306/webdb?charset=utf8"; // 마리아db에선 utf-8로 하면 오류! 뒤에 옵션은 추가 가능
 			conn = DriverManager.getConnection(url, "webdb", "webdb");
 		} catch (ClassNotFoundException e) {
-			System.out.println("Class Not Found:"+e);
+			System.out.println("Class Not Found:" + e);
 //		} catch (SQLException e) {  //예외는 한곳에서 처리하는게 좋음(중복x) throws로 밖으로 넘기는것
 //			System.out.println("error:"+e);
 		}
 		return conn;
 
 	}
-		
+
+	public boolean updateStatus(long no, String string) {
+		boolean result = false;
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = getConnection();
+
+			// 3. Statement 생성
+			String sql = "update book set status=? where no=?";
+			pstmt = conn.prepareStatement(sql);
+
+			// 4 바인딩
+			pstmt.setString(1, string);
+			pstmt.setLong(2, no);
+
+			// 5. SQL 실행
+			int count = pstmt.executeUpdate(); // executeQuery select 함수에서
+
+			// 6. 결과처리
+			result = count == 1;
+
+		} catch (SQLException e) {
+			System.out.println("Error : " + e);
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+
+	}
 
 }

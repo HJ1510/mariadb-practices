@@ -6,6 +6,7 @@ import java.util.Scanner;
 import com.bitacademy.bookshop.dao.BookDao;
 import com.bitacademy.bookshop.example.Book;
 import com.bitacademy.bookshop.vo.BookVo;
+import com.bitacademy.emaillist.vo.EmaillistVo;
 
 public class BookShop {
 
@@ -32,7 +33,7 @@ public class BookShop {
 //		if (books[num - 1].getStateCode() == 0) {
 //			books[num - 1].rent();
 //		}
-	
+
 		rentBook(bookNo);
 
 		// (2) Book 객체의 정보를 출력
@@ -42,17 +43,15 @@ public class BookShop {
 	}
 
 	private static void displayBookInfo() {
-		List<BookVo> list=new BookDao().findAll();
-		for (BookVo vo:list) {
-			System.out.println("["+vo.getNo()+"]"+"책 제목:" + vo.getTitle() + 
-					", 작가:" + vo.getAuthorName()+ 
-					", 대여유무: " +vo.getStatus());
+		List<BookVo> list = new BookDao().findAll();
+		for (BookVo vo : list) {
+			System.out.println("[" + vo.getNo() + "]" + "책 제목:" + vo.getTitle() + ", 작가:" + vo.getAuthorName()
+					+ ", 대여유무: " + vo.getStatus());
 		}
 	}
-	
-	private static void rentBook(long no) {	
-		new BookDao().updateStatus(no,"대여중");
-		
+
+	private static void rentBook(long no) {
+		new BookDao().updateStatus(no, "대여중");
 	}
 
 }

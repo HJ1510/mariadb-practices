@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import com.bitacademy.bookshop.vo.AuthorVo;
 
-public class AythorDao {
+public class AuthorDao {
 
 	public boolean insert(AuthorVo vo) {
 		boolean result = false;

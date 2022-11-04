@@ -1,6 +1,6 @@
 package com.bitacademy.bookshop.dao.test;
 
-import com.bitacademy.bookshop.dao.AythorDao;
+import com.bitacademy.bookshop.dao.AuthorDao;
 import com.bitacademy.bookshop.vo.AuthorVo;
 
 public class AuthorDaoTest {
@@ -24,7 +24,7 @@ public class AuthorDaoTest {
 //
 //	}
 	private static void testInsert(String name) {
-		AythorDao dao = new AythorDao();
+		AuthorDao dao = new AuthorDao();
 
 		AuthorVo vo = new AuthorVo();
 		vo.setName(name);
