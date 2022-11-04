@@ -55,6 +55,26 @@ public class EmaillistApp {
 		doList();
 
 	}
+	
+//	private static void doAdd() { // 강사님
+//		System.out.print("성:");
+//		String firstName = scanner.nextLine();
+//		
+//		System.out.print("이름:");
+//		String lastName = scanner.nextLine();
+//
+//		System.out.print("이메일:");
+//		String email = scanner.nextLine();
+//
+//		EmaillistVo vo = new EmaillistVo();
+//		vo.setFirstName(firstName);
+//		vo.setLastName(lastName);
+//		vo.setEmail(email);
+//		
+//		new EmaillistDao().insert(vo);
+//		
+//		doList();
+//	}
 
 	private static void doList() {
 		List<EmaillistVo> list = new EmaillistDao().findAll();
