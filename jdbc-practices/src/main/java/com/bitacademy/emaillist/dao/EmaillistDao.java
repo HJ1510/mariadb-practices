@@ -62,7 +62,7 @@ public class EmaillistDao {
 
 			stmt = conn.createStatement();
 
-			String sql = "delete from emaillist where email = '"+ email+"'";
+			String sql = "delete from emaillist where email = '"+email+"'";
 
 			int count = stmt.executeUpdate(sql); 
 

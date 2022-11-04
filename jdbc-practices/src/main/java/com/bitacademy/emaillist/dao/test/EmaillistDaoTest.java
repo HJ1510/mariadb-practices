@@ -9,12 +9,27 @@ public class EmaillistDaoTest {
 
 	public static void main(String[] args) {
 		testFindAll();
-		testInsert();
+		testInsert("윤","현정2","yoon@gamail.com");
+//		testdelelte("yoon@gmail.com");
 
 	}
 
+//
+//	private static void testdelelte(String email) {
+//		new EmaillistDao().deleteByEmail(email);
+//	}
+//
 
-	private static void testInsert() {
+
+
+
+	private static void testInsert(String firstName, String lastName, String email) {
+		EmaillistVo vo = new EmaillistVo();
+		vo.setFirst_name(firstName);
+		vo.setLast_name(lastName);
+		vo.setEmail(email);
+		
+		new EmaillistDao().insert(vo);
 		
 		
 	}

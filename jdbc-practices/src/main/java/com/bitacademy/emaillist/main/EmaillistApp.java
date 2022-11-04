@@ -17,8 +17,8 @@ public class EmaillistApp {
 
 			if ("l".equals(command)) {
 				doList();
-//			} else if ("a".equals(command)) {
-//				doAdd();
+			} else if ("a".equals(command)) {
+				doAdd();
 			} else if ("d".equals(command)) {
 				doDelete();
 			} else if ("q".equals(command)) {
@@ -35,25 +35,26 @@ public class EmaillistApp {
 		new EmaillistDao().deleteByEmail(email);
 		doList();
 	}
-	
-//
-//	private static void doAdd() {
-//		System.out.println("성: ");
-//		String vo.= scanner.nextLine();
-//
-//		System.out.println("이름: ");
-//		String lastName = scanner.nextLine();
-//
-//		System.out.println("이메일: ");
-//		String email = scanner.nextLine();
-//		
-//		System.out.println(firstName + ":" + lastName + ":" + email);
-//		
-//		new EmaillistDao().insert(vo);
-//				
-//		doList();
-//
-//	}
+
+	private static void doAdd() {
+		EmaillistVo vo = new EmaillistVo();
+
+		System.out.println("성: ");
+		vo.setFirst_name(scanner.nextLine());
+
+		System.out.println("이름: ");
+		vo.setLast_name(scanner.nextLine());
+
+		System.out.println("이메일: ");
+		vo.setEmail(scanner.nextLine());
+
+		System.out.println(vo.getFirst_name() + vo.getLast_name() + ":" + vo.getEmail());
+
+		new EmaillistDao().insert(vo);
+
+		doList();
+
+	}
 
 	private static void doList() {
 		List<EmaillistVo> list = new EmaillistDao().findAll();
