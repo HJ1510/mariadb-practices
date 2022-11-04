@@ -29,10 +29,6 @@ public class BookShop {
 		scanner.close();
 
 		// (1) 입력된 번호에 맞는 책을 찾아 대여 되었음(sttatus="대여중")을 체크 합니다. // 코드 0=재고있음
-//		if (books[num - 1].getStateCode() == 0) {
-//			books[num - 1].rent();
-//		}
-
 		rentBook(bookNo);
 
 		// (2) Book 객체의 정보를 출력
@@ -49,7 +45,7 @@ public class BookShop {
 		}
 	}
 
-	private static void rentBook(long no) {
+	private static void rentBook(long no) { //대여중으로 상태 변경
 		new BookDao().updateStatus(no, "대여중");
 	}
 

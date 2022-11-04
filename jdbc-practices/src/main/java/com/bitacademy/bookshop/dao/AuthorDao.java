@@ -33,6 +33,7 @@ public class AuthorDao {
 			// 5. SQL 실행
 			int count = pstmt.executeUpdate(); // executeQuery select 함수에서
 
+			// 6. 결과처리
 			result = count == 1;
 
 		} catch (ClassNotFoundException e) {

@@ -6,7 +6,7 @@ public class BookVo { //!!!!vo는 꼭 테이블과 맵핑 되는것 아님!!!! j
 	private String title;
 	private String status;
 	private Long authorNo;
-	private String authorName; // private AuthorVo author; 으로 하려면 코드가 길어짐.. 객체지향에 더 맞긴함
+	private String authorName; // authorName은 book 테이블에는 없었지만 필요하기때문에 작성됨 private AuthorVo author; 으로 하려면 코드가 길어짐.. 객체지향에 더 맞긴함
 	
 	
 	public Long getNo() {
