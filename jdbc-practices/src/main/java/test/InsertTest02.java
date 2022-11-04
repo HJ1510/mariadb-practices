@@ -5,14 +5,16 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DeleteTest {
+public class InsertTest02 {
 
 	public static void main(String[] args) {
-		boolean result = delete(7L);
-		System.out.println(result ? "성공" : "실패");
+		insert("시스템");
+		insert("마케팅");
+		insert("운영");
+
 	}
 
-	private static boolean delete(Long no) {
+	private static Boolean insert(String name) {
 		boolean result = false;
 		
 		Connection conn = null;
@@ -30,7 +32,7 @@ public class DeleteTest {
 			stmt = conn.createStatement();
 
 			// 4. SQL 실행
-			String sql = "delete from dept where no="+no;
+			String sql = "insert into dept values(null,'" + name + "')";
 
 			int count = stmt.executeUpdate(sql); // executeQuery select 함수에서
 
@@ -53,7 +55,6 @@ public class DeleteTest {
 			}
 		}
 		return result;
-
 
 	}
 
