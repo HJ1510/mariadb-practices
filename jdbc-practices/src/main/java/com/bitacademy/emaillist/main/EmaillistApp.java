@@ -2,6 +2,7 @@ package com.bitacademy.emaillist.main;
 
 import java.util.List;
 import java.util.Scanner;
+
 import com.bitacademy.emaillist.dao.EmaillistDao;
 import com.bitacademy.emaillist.vo.EmaillistVo;
 
@@ -16,8 +17,8 @@ public class EmaillistApp {
 
 			if ("l".equals(command)) {
 				doList();
-			} else if ("a".equals(command)) {
-				doAdd();
+//			} else if ("a".equals(command)) {
+//				doAdd();
 			} else if ("d".equals(command)) {
 				doDelete();
 			} else if ("q".equals(command)) {
@@ -29,24 +30,30 @@ public class EmaillistApp {
 	}
 
 	private static void doDelete() {
-		
-		doList();
-	}
-
-	private static void doAdd() {
-		System.out.println("성: ");
-		String firstName = scanner.nextLine();
-
-		System.out.println("이름: ");
-		String lastName = scanner.nextLine();
-
-		System.out.println("이메일: ");
+		System.out.println("email: ");
 		String email = scanner.nextLine();
-
-		System.out.println(firstName + ":" + lastName + ":" + email);
+		new EmaillistDao().deleteByEmail(email);
 		doList();
-
 	}
+	
+//
+//	private static void doAdd() {
+//		System.out.println("성: ");
+//		String vo.= scanner.nextLine();
+//
+//		System.out.println("이름: ");
+//		String lastName = scanner.nextLine();
+//
+//		System.out.println("이메일: ");
+//		String email = scanner.nextLine();
+//		
+//		System.out.println(firstName + ":" + lastName + ":" + email);
+//		
+//		new EmaillistDao().insert(vo);
+//				
+//		doList();
+//
+//	}
 
 	private static void doList() {
 		List<EmaillistVo> list = new EmaillistDao().findAll();
