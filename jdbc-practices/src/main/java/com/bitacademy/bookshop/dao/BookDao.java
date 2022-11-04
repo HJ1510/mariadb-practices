@@ -62,7 +62,7 @@ public class BookDao {
 		try {
 			conn = getConnection();
 
-			String sql = "select a.no ,a.title, b.name,a.status  from book a ,author b where a.author_no =b.no order by a.no asc"; // 바인딩
+			String sql = "select a.no ,a.title, b.name,a.status  from book a ,author b where a.author_no =b.no order by a.no asc"; 
 			pstmt = conn.prepareStatement(sql); // 바인딩 없어도 필요
 
 			rs = pstmt.executeQuery();
