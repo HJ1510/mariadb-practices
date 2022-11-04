@@ -15,14 +15,6 @@ public class AuthorDaoTest {
 
 	}
 
-//	private static void testInsert() {
-//		AythorDao dao = new AythorDao();
-//
-//		AuthorVo vo = new AuthorVo();
-//		vo.setName("스테파니메이어");
-//		dao.insert(vo);
-//
-//	}
 	private static void testInsert(String name) {
 		AuthorDao dao = new AuthorDao();
 
