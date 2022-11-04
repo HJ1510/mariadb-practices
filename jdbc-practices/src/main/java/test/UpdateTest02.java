@@ -30,7 +30,7 @@ public class UpdateTest02 {
 			conn = DriverManager.getConnection(url, "webdb", "webdb");
 
 			// 3. Statement 생성
-			String sql = "update dept" + " set name=?" + " where no=?";
+			String sql = "update dept set name=? where no=?";
 			pstmt = conn.prepareStatement(sql);
 
 			// 4 바인딩
