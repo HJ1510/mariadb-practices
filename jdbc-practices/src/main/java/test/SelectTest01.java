@@ -32,7 +32,8 @@ public class SelectTest01 {
 			String sql = "select emp_no, first_name from employees where first_name like '%" + keyword + "%'";
 
 			rs = stmt.executeQuery(sql); //executeQuery select 함수에서
-
+			
+			//5. 결과(ResultSet) 처리
 			while (rs.next()) {
 				Long empNo = rs.getLong(1); // 데이터 베이스는 1부터 시작
 				String firstName = rs.getString(2);

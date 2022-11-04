@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class DeleteTest01 {
 
 	public static void main(String[] args) {
-		boolean result = delete(7L);
+		boolean result = delete(14L);
 		System.out.println(result ? "성공" : "실패");
 	}
 

@@ -2,8 +2,8 @@ package test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class DeleteTest02 {
 
@@ -16,7 +16,7 @@ public class DeleteTest02 {
 		boolean result = false;
 		
 		Connection conn = null;
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		
 		try {
 			// 1. JDBC Driver Class Loarding
@@ -26,14 +26,17 @@ public class DeleteTest02 {
 			String url = "jdbc:mysql://127.0.0.1:3306/webdb?charset=utf8"; // 마리아db에선 utf-8로 하면 오류! 뒤에 옵션은 추가 가능
 			conn = DriverManager.getConnection(url, "webdb", "webdb");
 
-			// 3. Statement 생성
-			stmt = conn.createStatement();
-
-			// 4. SQL 실행
+			// 3. Statement 준비
 			String sql = "delete from dept where no="+no;
-
-			int count = stmt.executeUpdate(sql); // executeQuery select 함수에서
-
+			pstmt = conn.prepareStatement(sql);
+			
+			// 4. 바인딩			
+			pstmt.setLong(1, no);
+			
+			// 5. SQL 실행
+			int count = pstmt.executeUpdate(sql); // executeQuery select 함수에서
+			
+			//6. 결과처리
 			result = count == 1;
 
 		} catch (ClassNotFoundException e) {
@@ -42,8 +45,8 @@ public class DeleteTest02 {
 			System.out.println("Error : " + e);
 		} finally {
 			try {
-				if (stmt != null) {
-					stmt.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (conn != null) {
 					conn.close();

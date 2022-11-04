@@ -2,8 +2,8 @@ package test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class InsertTest02 {
 
@@ -18,7 +18,7 @@ public class InsertTest02 {
 		boolean result = false;
 		
 		Connection conn = null;
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		
 		try {
 			// 1. JDBC Driver Class Loarding
@@ -29,12 +29,14 @@ public class InsertTest02 {
 			conn = DriverManager.getConnection(url, "webdb", "webdb");
 
 			// 3. Statement 생성
-			stmt = conn.createStatement();
+			String sql = "insert into dept values(null, ?)";
+			pstmt = conn.prepareStatement(sql);
 
-			// 4. SQL 실행
-			String sql = "insert into dept values(null,'" + name + "')";
-
-			int count = stmt.executeUpdate(sql); // executeQuery select 함수에서
+			// 4.Binding
+			pstmt.setString(1, name);
+			
+			// 5. SQL 실행
+			int count = pstmt.executeUpdate(); // executeQuery select 함수에서
 
 			result = count == 1;
 
@@ -44,8 +46,8 @@ public class InsertTest02 {
 			System.out.println("Error : " + e);
 		} finally {
 			try {
-				if (stmt != null) {
-					stmt.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (conn != null) {
 					conn.close();

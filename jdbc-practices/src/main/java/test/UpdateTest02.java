@@ -2,15 +2,15 @@ package test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class UpdateTest02 {
 
 	public static void main(String[] args) {
-		DeptVo vo=new DeptVo();
+		DeptVo vo = new DeptVo();
 		vo.setNo(1L);
-		vo.setName("경영지원");
+		vo.setName("경영");
 		boolean result = update(vo);
 		System.out.println(result ? "성공" : "실패");
 	}
@@ -19,7 +19,7 @@ public class UpdateTest02 {
 		boolean result = false;
 
 		Connection conn = null;
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 
 		try {
 			// 1. JDBC Driver Class Loarding
@@ -30,15 +30,17 @@ public class UpdateTest02 {
 			conn = DriverManager.getConnection(url, "webdb", "webdb");
 
 			// 3. Statement 생성
-			stmt = conn.createStatement();
+			String sql = "update dept" + " set name=?" + " where no=?";
+			pstmt = conn.prepareStatement(sql);
 
-			// 4. SQL 실행
-			String sql = "update dept"
-					+ " set name='"+deptVo.getName()+"'"
-					+ " where no="+deptVo.getNo();
+			// 4 바인딩
+			pstmt.setString(1, deptVo.getName());
+			pstmt.setLong(2, deptVo.getNo());
 
-			int count = stmt.executeUpdate(sql); // executeQuery select 함수에서
-
+			// 5. SQL 실행
+			int count = pstmt.executeUpdate(); // executeQuery select 함수에서
+			
+			// 6. 결과처리
 			result = count == 1;
 
 		} catch (ClassNotFoundException e) {
@@ -47,8 +49,8 @@ public class UpdateTest02 {
 			System.out.println("Error : " + e);
 		} finally {
 			try {
-				if (stmt != null) {
-					stmt.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (conn != null) {
 					conn.close();
