@@ -6,7 +6,6 @@ import java.util.Scanner;
 import com.bitacademy.bookshop.dao.BookDao;
 import com.bitacademy.bookshop.example.Book;
 import com.bitacademy.bookshop.vo.BookVo;
-import com.bitacademy.emaillist.vo.EmaillistVo;
 
 public class BookShop {
 
