@@ -6,6 +6,15 @@ import com.bitacademy.bookshop.vo.BookVo;
 public class BookDaoTest {
 
 	public static void main(String[] args) {
+		testInsert(1L,"트와일라잇");
+		testInsert(1L,"뉴문");
+		testInsert(1L,"이클립스");
+		testInsert(1L,"풀하우스");
+		testInsert(8L,"풀하우스");
+		testInsert(8L,"풀하우스");
+		testInsert(8L,"풀하우스");
+		testInsert(8L,"풀하우스");
+		testInsert(8L,"풀하우스");
 		testInsert(8L,"풀하우스");
 	}
 
