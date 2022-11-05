@@ -16,7 +16,7 @@ public class AuthorDao {
 		PreparedStatement pstmt = null;
 
 		try {
-			// 1. JDBC Driver Class Loarding
+			// 1. JDBC Driver Class Loading
 			Class.forName("org.mariadb.jdbc.Driver");
 
 			// 2. 연결하기

@@ -28,7 +28,7 @@ public class BookShop {
 		int bookNo = scanner.nextInt();
 		scanner.close();
 
-		// (1) 입력된 번호에 맞는 책을 찾아 대여 되었음(sttatus="대여중")을 체크 합니다. // 코드 0=재고있음
+		// (1) 입력된 번호에 맞는 책을 찾아 대여 되었음(status="대여중")을 체크 합니다. // 코드 0=재고있음
 		rentBook(bookNo);
 
 		// (2) Book 객체의 정보를 출력
