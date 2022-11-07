@@ -24,7 +24,7 @@ public class EmaillistDao {
 
 			stmt = conn.createStatement();
 
-			String sql = "insert into emaillist values(null, '" + vo.getFirst_name() + "', '" + vo.getLast_name()+ "', '"
+			String sql = "insert into emaillist values(null, '" + vo.getFirstName() + "', '" + vo.getLastName()+ "', '"
 					+ vo.getEmail() + "')";
 
 			count = stmt.executeUpdate(sql); 
@@ -102,7 +102,7 @@ public class EmaillistDao {
 
 			stmt = conn.createStatement();
 
-			String sql = "select first_name, last_name, email from emaillist order by no desc";
+			String sql = "select FirstName, LastName, email from emaillist order by no desc";
 
 			rs = stmt.executeQuery(sql);
 
@@ -112,8 +112,8 @@ public class EmaillistDao {
 				String email = rs.getString(3);
 
 				EmaillistVo vo = new EmaillistVo();
-				vo.setFirst_name(firstName);
-				vo.setLast_name(lastName);
+				vo.setFirstName(firstName);
+				vo.setLastName(lastName);
 				vo.setEmail(email);
 
 				result.add(vo);

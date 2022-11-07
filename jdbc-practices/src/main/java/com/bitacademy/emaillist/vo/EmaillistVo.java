@@ -2,8 +2,8 @@ package com.bitacademy.emaillist.vo;
 
 public class EmaillistVo {
 	private Long no;
-	private String first_name;
-	private String last_name;
+	private String FirstName;
+	private String LastName;
 	private String email;
 	public Long getNo() {
 		return no;
@@ -11,17 +11,17 @@ public class EmaillistVo {
 	public void setNo(Long no) {
 		this.no = no;
 	}
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstName() {
+		return FirstName;
 	}
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String FirstName) {
+		this.FirstName = FirstName;
 	}
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return LastName;
 	}
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String LastName) {
+		this.LastName = LastName;
 	}
 	public String getEmail() {
 		return email;
@@ -31,7 +31,7 @@ public class EmaillistVo {
 	}
 	@Override
 	public String toString() {
-		return "EmaillistVo [no=" + no + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email
+		return "EmaillistVo [no=" + no + ", FirstName=" + FirstName + ", LastName=" + LastName + ", email=" + email
 				+ "]";
 	}
 
