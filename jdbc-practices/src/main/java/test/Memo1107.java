@@ -44,7 +44,7 @@ public class Memo1107 {
  *emaillist02
  *guestbook02
  *
- *mysite02
+ *mysite02 평가과제(게시판)
  *
  *(spring)
  *emaillist03
@@ -53,5 +53,9 @@ public class Memo1107 {
  *mysite03(Spring MVC, XML Configuration)
  *mysite04(Spring MVC, Java Class Configuration)
  *mysite05(Spring Boot, Java Class Configuration)
+ *
+ *jblog03
+ *jblog04
+ *jblog05
  *
  */
