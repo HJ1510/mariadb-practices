@@ -25,8 +25,8 @@ public class EmaillistDaoTest {
 
 	private static void testInsert(String firstName, String lastName, String email) {
 		EmaillistVo vo = new EmaillistVo();
-		vo.setFirst_name(firstName);
-		vo.setLast_name(lastName);
+		vo.setFirstName(firstName);
+		vo.setLastName(lastName);
 		vo.setEmail(email);
 		
 		new EmaillistDao().insert(vo);
@@ -38,7 +38,7 @@ public class EmaillistDaoTest {
 	private static void testFindAll() {
 		List<EmaillistVo> list = new EmaillistDao().findAll();
 		for (EmaillistVo vo : list) {
-			System.out.println(vo.getFirst_name() + " " + vo.getEmail());
+			System.out.println(vo.getFirstName() + " " + vo.getEmail());
 		}
 
 	}

@@ -40,15 +40,15 @@ public class EmaillistApp {
 		EmaillistVo vo = new EmaillistVo();
 
 		System.out.println("성: ");
-		vo.setFirst_name(scanner.nextLine());
+		vo.setFirstName(scanner.nextLine());
 
 		System.out.println("이름: ");
-		vo.setLast_name(scanner.nextLine());
+		vo.setLastName(scanner.nextLine());
 
 		System.out.println("이메일: ");
 		vo.setEmail(scanner.nextLine());
 
-		System.out.println(vo.getFirst_name() + vo.getLast_name() + ":" + vo.getEmail());
+		System.out.println(vo.getFirstName() + vo.getLastName() + ":" + vo.getEmail());
 
 		new EmaillistDao().insert(vo);
 
@@ -60,7 +60,6 @@ public class EmaillistApp {
 //		System.out.print("성:");
 //		String firstName = scanner.nextLine();
 //		
-//		System.out.print("이름:");
 //		String lastName = scanner.nextLine();
 //
 //		System.out.print("이메일:");
@@ -79,7 +78,7 @@ public class EmaillistApp {
 	private static void doList() {
 		List<EmaillistVo> list = new EmaillistDao().findAll();
 		for (EmaillistVo vo : list) {
-			System.out.println("이름: " + vo.getFirst_name() + " " + vo.getLast_name() + ", 이메일: " + vo.getEmail());
+			System.out.println("이름: " + vo.getFirstName() + " " + vo.getLastName() + ", 이메일: " + vo.getEmail());
 		}
 
 	}
