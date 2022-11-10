@@ -15,5 +15,5 @@ public class Memo1108 {
  * 4. forward 요청을 forward
  * 
  * forward 내부 서블릿에서 JSP로 이동	 <-두가지는 비교대상이 아님! 완전히 다른 기술 리퀘스트가 연장되는것
- * redirect 브라우저로 바로 응답 
+ * redirect 브라우저로 바로 응답 .
  */
