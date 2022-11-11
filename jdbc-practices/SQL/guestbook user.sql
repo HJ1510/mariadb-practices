@@ -30,12 +30,16 @@ select * from `user` u ;
 
 select * from board b ;
 
-insert into board values(null, '멍', '...', 0, now(), 1 , 1, 0, (select no from user where name='둘리'));
+insert into board values(null, '안녕2', '헬로우~~', 0, now(), 1 , 1, 0, (select no from user where name='둘리'));
 
-select a.no, a.title, a.contents, a.hit, date_format(a.reg_date, '%Y/%m/%d %H:%i:%s' ),a.group_no, a.order_no, a.depth , a.user_no, b.name  
-from board a, user b
+update board set user_no = 3 where title='그만';
+
+select title , contents from board where no=3 ;
+
+select a.no, a.title, a.contents, a.hit, date_format(a.reg_date, '%Y/%m/%d %H:%i:%s' ),a.group_no, a.order_no, a.depth , a.user_no, b.name 
+from board a, user b 
 where a.user_no =b.no 
-order by group_no desc, order_no asc;
+order by no desc, group_no desc, order_no asc;
 limit (page-1)*3,3
 
 pstmt.setInt(1,(page-1)*3)
