@@ -12,6 +12,7 @@ import com.bitacademy.emaillist.vo.EmaillistVo;
 
 public class EmaillistDao {
 	public boolean insert(EmaillistVo vo) {
+		boolean result = false;
 		Connection conn = null;
 		Statement stmt = null;
 		int count = 0;
@@ -28,6 +29,8 @@ public class EmaillistDao {
 					+ vo.getEmail() + "')";
 
 			count = stmt.executeUpdate(sql); 
+			
+			result = count == 1;
 
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 로딩 실패 : " + e);
@@ -45,7 +48,7 @@ public class EmaillistDao {
 				e.printStackTrace();
 			}
 		}
-		return false;
+		return result;
 	}
 
 	public Boolean deleteByEmail(String email) {
